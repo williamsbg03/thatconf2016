@@ -60,8 +60,39 @@
     "definitions": {
         "Customer": {
             "properties": {
-                "firstname": {
+                "firstName": {
                     "description": "The customers first name",
+                    "type": "string"
+                },
+                "lastName": {
+                    "description": "The customers last name",
+                    "type": "string"
+                },
+                "age": {
+                    "description": "The age of the customer",
+                    "type": "number"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                }
+            }
+        },
+        "Address": {
+            "properties": {
+                "street": {
+                    "description": "The street mailing address",
+                    "type": "string"
+                },
+                "city": {
+                    "description": "The city of the mailing address",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "The state of the mailing address",
+                    "type": "string"
+                },
+                "zip": {
+                    "description": "The zip of the mailing address",
                     "type": "string"
                 }
             }

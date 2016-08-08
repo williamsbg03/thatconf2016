@@ -10,7 +10,7 @@ spec:
       port: 443
       nodePort: 0
       protocol: TCP
-  type: NodePort
+  type: ClusterIP
   selector:
     app: customer-api
 

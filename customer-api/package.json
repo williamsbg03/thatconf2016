@@ -4,12 +4,14 @@
   "description": "Sample customer api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bunyan": "^1.8.1",
     "express": "^4.14.0",
     "lodash": "^4.14.2",
     "node-persist": "0.0.11"

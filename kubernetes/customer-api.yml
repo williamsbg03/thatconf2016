@@ -1,0 +1,35 @@
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: customer-api
+spec:
+  ports:
+    - name: https
+      port: 443
+      nodePort: 0
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: customer-api
+
+---
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: customer-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: customer-api
+    spec:
+      containers:
+        - name: customer-api
+          image: "williamsbg03/customer-api"
+          ports:
+            - containerPort: 80
+            - containerPort: 443

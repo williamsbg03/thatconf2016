@@ -1,15 +1,35 @@
 'use strict';
 var app = require('./app');
+var https = require('https');
 var http = require('http');
-var httpListenerPort = 8080;
+var fs = require('fs');
+var log = require('./utils/logger');
+
+var apiCerts =  {
+    key: fs.readFileSync(__dirname + '/server.key.pem', 'utf8'),
+    cert: fs.readFileSync(__dirname + '/server.cert.pem', 'utf8'),
+    ca: fs.readFileSync(__dirname + '/root-ca.cert.pem', 'utf8'),
+    requestCert: true,
+    rejectUnauthorized: true
+};
+var httpListenerPort = 80;
+var httpsListenerPort = 443;
 
 var httpServer = http.createServer(app).listen(httpListenerPort, function () {
-    console.log('app is listening at localhost:' + httpListenerPort);
+    log.info('app is listening at localhost:' + httpListenerPort);
+});
+
+var httpsServer = https.createServer(apiCerts, app).listen(httpsListenerPort, function () {
+    log.info('app is listening at localhost:' + httpsListenerPort);
 });
 
 process.on('SIGTERM', function () {
     httpServer.close(function () {
-        console.log('SIGTERM issued...app is shutting down');
+        log.info('SIGTERM issued...app is shutting down');
+        process.exit(0);
+    });
+    httpsServer.close(function () {
+        log.info('SIGTERM issued...app is shutting down');
         process.exit(0);
     });
 });

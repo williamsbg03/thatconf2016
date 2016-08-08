@@ -3,7 +3,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var customer = require('./routes/customer');
 var basePath = '/api/v1/customers';
-var initStorage = require('./utils/initStorage');
 var app = express();
 
 //Body Parser module to allow easy access of json body

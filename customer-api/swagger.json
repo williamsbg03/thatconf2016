@@ -42,7 +42,7 @@
                     "type": "string",
                     "description": "unique identifier of the specific client",
                     "required": true
-                },
+                }],
                 "responses": {
                     "200": {
                         "description": "Customer for the requested id",
@@ -55,138 +55,14 @@
                     }
                 }
             }
-        },
-        "/accounts/client/{nmUniqueId}": {
-            "get": {
-                "summary": "Get all accounts for a specific client ID. Returns all accounts for a client.",
-                "parameters": [{
-                    "name": "nmUniqueId",
-                    "in": "path",
-                    "type": "string",
-                    "description": "unique identifier of the specific client",
-                    "required": true
-                },
-                {
-                "name": "apikey",
-                "in": "header",
-                "type": "string",
-                "description": "apikey that allows access to the service",
-                "required": true
-                },
-                {
-                "name": "X-NM-NM_Login_Id",
-                "in": "header",
-                "type": "string",
-                "description": "nmUniqueId of the currently logged in user",
-                "required": true
-                },
-                {
-                "name": "X-NM-NM_UID",
-                "in": "header",
-                "type": "string",
-                "description": "loginId of the currently logged in user"
-                },
-                {
-                "name": "Cookie",
-                "in": "header",
-                "type": "string",
-                "description": "Consumers are required to provide a Cookie header when the user participates in a works-for relationship and wants to search under the context of the works-for user. clientNmUniqueId in the cookie must match path parameter. Cookie example: X_NM_CLIENT_CONTEXT={\"worksForLoginId\": \"abc1234\",\"worksForNmUniqueId\": \"AAABBBCCC\", \"clientNmUniqueId\":\"AAABBBCCC\"}"
-                }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Sends the list of accounts for a client",
-                        "schema": {
-                            "$ref": "#/definitions/Account"
-                        }
-                    }
-                }
-            }
         }
     },
     "definitions": {
-        "Account": {
+        "Customer": {
             "properties": {
-                "accountNumber": {
-                    "description": "subjectNum - an accounts's identifier",
+                "firstname": {
+                    "description": "The customers first name",
                     "type": "string"
-                },
-                "accountNumberMasked": {
-                    "description": "reference accountNumber above except all but the last four digits have been replaced with x",
-                    "type": "string"
-                },
-                "accountId": {
-                    "description": "subjectIdNum - unique identifier for an account",
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "accountTypeCde": {
-                    "description": "DerivProdTypeCde - code indicating the type of account\n1 = Life Insurance\n2 = Disability Insurance\n3 = Long Term Care\n4 = Income Plan\n5 = Access Fund\n6 = Fixed Annuity\n7 = Investment Product\n8 = Variable Annuity\n",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "accountType": {
-                    "description": "DerivProdTypeTxt - text indicating the type of account",
-                    "type": "string"
-                },
-                "accountTypeDetail": {
-                    "description": "DerivOperProdTxt - text indicating the specific type of account",
-                    "type": "string"
-                },
-                "value": {
-                    "description": "finPrdCashValueAmt - value of an account that contributes towards net worth",
-                    "type": "number",
-                    "format": "double"
-                },
-                "valueDescription": {
-                    "description": "The description for which the account value is derived",
-                    "type": "string"
-                },
-                "benefit": {
-                    "description": "finPrdBenefitAmt - the primary benefit value amount for an account",
-                    "type": "number",
-                    "format": "double"
-                },
-                "benefitDescription": {
-                    "description": "The description for which the account benefit is derived",
-                    "type": "string"
-                },
-                "benefitContext": {
-                    "description": "prodBenFreqTxt - describes the benefit frequency"
-                },
-                "insuredName": {
-                    "description": "insured name associated to the account",
-                    "type": "string"
-                },
-                "ownerName": {
-                    "description": "owner name associated to the account",
-                    "type": "string"
-                },
-                "annualizedPremium": {
-                    "description": "finPrdPremTxt - annualized premium of the account",
-                    "type": "number",
-                    "format": "double"
-                },
-                "valueAsOfDate": {
-                    "description": "values on the account are as of this date",
-                    "type": "string"
-                },
-                "surrenderValue": {
-                    "description": "netPCSurValAmt - surrender value of the account",
-                    "type": "number",
-                    "format": "double"
-                },
-                "institution": {
-                    "description": "the business or organization that holds the product, account, or investment",
-                    "type": "string"
-                },
-                "override": {
-                    "description": "tell whether its plan B or plan A option",
-                    "type": "boolean"
-                },
-                "isExcluded": {
-                    "description": "tell whether its an excluded account or not",
-                    "type": "boolean"
                 }
             }
         }

@@ -4,6 +4,7 @@ var router = express.Router();
 var _max = require('lodash/max');
 var _merge = require('lodash/merge');
 var storage = require('node-persist');
+storage.initSync();
 
 router.get('/', function (req, res, next) {
     var customers = storage.values();

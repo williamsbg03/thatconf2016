@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
         - name: nginxapiproxy
-          image: "pfremm/nginxapiproxy"
+          image: "williamsbg03/nginxapiproxy"
           ports:
             - containerPort: 80

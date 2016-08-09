@@ -13,11 +13,11 @@ Using NodeJS, Nginx, Docker, and Kubernetes you can create a highly available mi
 
 3. Install [kubectl]() (Kubernetes CLI)
     ```
-    brew install kubernetes-cli
-    ``` 
+    curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.4/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+    ```
     **OR** 
     ```
-    curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.4/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+    brew install kubernetes-cli
     ```
 
 4. Start Minikube

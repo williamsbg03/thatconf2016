@@ -10,10 +10,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "bunyan": "^1.8.1",
-    "express": "^4.14.0",
-    "lodash": "^4.14.2",
+    "body-parser": "1.15.2",
+    "bunyan": "1.8.1",
+    "express": "4.14.0",
+    "lodash": "4.14.2",
     "node-persist": "0.0.11"
+  },
+  "devDependencies": {
+    "request": "2.69.0",
+    "expect": "1.15.2",
+    "grunt": "0.4.5",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-jasmine-node": "0.3.1",
+    "grunt-jasmine-node-coverage": "0.4.1",
+    "grunt-jscs": "2.8.0",
+    "jscs-teamcity-reporter": "0.0.4",
+    "jshint-teamcity": "1.0.6",
+    "proxyquire": "1.7.4",
+    "supertest": "1.2.0",
+    "swagger-model-validator": "2.0.7"
   }
 }

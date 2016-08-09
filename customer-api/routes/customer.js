@@ -6,12 +6,12 @@ var _merge = require('lodash/merge');
 var storage = require('node-persist');
 storage.initSync();
 
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
     var customers = storage.values();
     return res.json(customers);
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/:id', function (req, res) {
     var customer = storage.getItem(req.params.id);
     if (!customer) {
         return res.sendStatus(404);
@@ -19,7 +19,7 @@ router.get('/:id', function (req, res, next) {
     return res.json(customer);
 });
 
-router.delete('/:id', function (req, res, next) {
+router.delete('/:id', function (req, res) {
     var customer = storage.getItem(req.params.id);
     if (!customer) {
         return res.sendStatus(404);
@@ -28,7 +28,7 @@ router.delete('/:id', function (req, res, next) {
     return res.sendStatus(204);
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res) {
     var customer = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -42,12 +42,12 @@ router.post('/', function (req, res, next) {
     };
     var max = parseInt(_max(storage.keys()));
     customer.id = max + 1;
-    storage.setItem(customer.id.toString(), customer)
+    storage.setItem(customer.id.toString(), customer);
     res.status(201);
     return res.json(customer);
 });
 
-router.put('/:id', function (req, res, next) {
+router.put('/:id', function (req, res) {
     var customer = storage.getItem(req.params.id);
     if (!customer) {
         return res.sendStatus(404);

@@ -3,32 +3,31 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginxapiproxy
+  name: todo
 spec:
   ports:
     - name: http
       port: 80
-      nodePort: 30080
       protocol: TCP
-  type: NodePort
+  type: ClusterIP
   selector:
-    app: nginxapiproxy
+    app: todo
 
 ---
 
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: nginxapiproxy
+  name: todo
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginxapiproxy
+        app: todo
     spec:
       containers:
-        - name: nginxapiproxy
-          image: "williamsbg03/nginxapiproxy"
+        - name: todo
+          image: "williamsbg03/todomvc"
           ports:
             - containerPort: 80

@@ -4,6 +4,10 @@ kind: Service
 apiVersion: v1
 metadata:
   name: customer-api
+  labels:
+    contextRoot: "customers"
+    version: v1
+    type: ms
 spec:
   ports:
     - name: https

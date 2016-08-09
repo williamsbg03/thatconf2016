@@ -8,7 +8,6 @@ spec:
   ports:
     - name: https
       port: 443
-      nodePort: 0
       protocol: TCP
   type: ClusterIP
   selector:

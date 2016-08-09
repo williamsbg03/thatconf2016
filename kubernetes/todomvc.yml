@@ -1,0 +1,33 @@
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+  type: ClusterIP
+  selector:
+    app: todo
+
+---
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: todo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+        - name: todo
+          image: "williamsbg03/todomvc"
+          ports:
+            - containerPort: 80

@@ -2,8 +2,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var customer = require('./routes/customer');
-var customer = require('./routes/health');
-var customer = require('./routes/doc');
+var health = require('./routes/health');
+var doc = require('./routes/doc');
 var log = require('./utils/logger');
 var basePath = '/api/v1/customers';
 var app = express();
@@ -25,8 +25,8 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(basePath + '/health', customer);
-app.use(basePath + '/doc', customer);
+app.use(basePath + '/health', health);
+app.use(basePath + '/doc', doc);
 app.use(basePath + '/', customer);
 
 // catch 404 and forward to error handler

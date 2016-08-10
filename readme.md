@@ -9,8 +9,11 @@ Using NodeJS, Nginx, Docker, and Kubernetes you can create a highly available mi
 2. Install [Minikube](https://github.com/kubernetes/minikube/releases) (a simple utility to run Kubernetes locally)
     ```
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.7.1/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+    brew install docker-machine-driver-xhyve
+    sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+    sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
     ```
-
+  
 3. Install [kubectl]() (Kubernetes CLI)
     ```
     curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.4/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
@@ -22,7 +25,7 @@ Using NodeJS, Nginx, Docker, and Kubernetes you can create a highly available mi
 
 4. Start Minikube
     ```
-    minikube start
+    minikube start --vm-driver="xhyve"
     ```
 
 5. Deploy apps to Kubernetes

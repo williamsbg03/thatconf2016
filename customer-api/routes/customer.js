@@ -29,17 +29,7 @@ router.delete('/:id', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    var customer = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        age: req.body.age,
-        address: {
-            street: req.body.street,
-            city: req.body.city,
-            state: req.body.state,
-            zip: req.body.zip
-        }
-    };
+    var customer = req.body;
     var max = parseInt(_max(storage.keys()));
     customer.id = max + 1;
     storage.setItem(customer.id.toString(), customer);
@@ -52,17 +42,7 @@ router.put('/:id', function (req, res) {
     if (!customer) {
         return res.sendStatus(404);
     }
-    var updatedCustomer = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        age: req.body.age,
-        address: {
-            street: req.body.street,
-            city: req.body.city,
-            state: req.body.state,
-            zip: req.body.zip
-        }
-    };
+    var updatedCustomer = req.body;
     customer = _merge(customer, updatedCustomer);
     return res.sendStatus(204);
 });

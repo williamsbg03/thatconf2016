@@ -2,6 +2,9 @@
 
 Using NodeJS, Nginx, Docker, and Kubernetes you can create a highly available microservice environment.  This repository contains a local demostration of how to integrate these technologies.
 
+## Presentation
+[http://www.slideshare.net/BradWilliams86/thatconference-2016-highly-available-nodejs]
+
 ## Getting Started
 
 1. Clone this repo

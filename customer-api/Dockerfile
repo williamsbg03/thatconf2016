@@ -1,4 +1,4 @@
-FROM node:4.4.3
+FROM node:6.6.0
 
 COPY package.json ./
 RUN npm install
